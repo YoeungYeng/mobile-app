@@ -23,7 +23,7 @@ class _MenuState extends State<Menu> {
   }
 
   Future<void> getCategory() async {
-    final String url = "${Config.connection}/categories";
+    final String url = "${Config.connection}/getcategory";
 
     try {
       final res = await http.get(Uri.parse(url));

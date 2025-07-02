@@ -33,19 +33,29 @@ class _NewdetailState extends State<Newdetail> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  ImageNetwork(
-                    image: widget.image,
-                    height: 400,
-                    width: 400,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          ImageNetwork(
+                            image: widget.image,
+                            height: 400,
+                            width: 400,
 
-                    fitAndroidIos: BoxFit.cover,
-                    fitWeb: BoxFitWeb.cover,
-                    onPointer: true,
-                    debugPrint: false,
-                  ),
-                  Text(widget.title, style: TextStyle(fontSize: 2),),
-                  Text(widget.content),
-                  Text(widget.description)
+                            fitAndroidIos: BoxFit.contain,
+                            fitWeb: BoxFitWeb.contain,
+                            onPointer: true,
+                            debugPrint: false,
+                          ),
+                          Text(widget.title, style: TextStyle(fontSize: 24.0),),
+                          Text(widget.content, style: TextStyle(fontSize: 16.0),),
+                          Text(widget.description, style: TextStyle(fontSize: 14.0),)
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

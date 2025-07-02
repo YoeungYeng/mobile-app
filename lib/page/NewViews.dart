@@ -58,80 +58,99 @@ class _NewviewsState extends State<Newviews> {
         : newsList.isEmpty
         ? const Center(child: Text("No news found."))
         : GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1,
-      ),
-      itemCount: newsList.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  // height: 300,
-                  padding: EdgeInsets.all(8.0),
-
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.0),
-                    color: Colors.white.withOpacity(0.6),
-                  ),
-                  child: ImageNetwork(
-                    onTap:
-                        () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder:
-                              (context) => Newdetail(
-                            title:
-                            newsList[index].title
-                                .toString(),
-                            content:
-                            newsList[index].content
-                                .toString(),
-                            description:
-                            newsList[index].description
-                                .toString(),
-                            image:
-                            newsList[index].image
-                                .toString(),
-                          ),
-                        ),
-                      ),
-                    },
-                    image: newsList[index].image.toString(),
-                    borderRadius: BorderRadius.circular(6.0),
-                    height: 300.0,
-                    width: 600,
-                    duration: 1500,
-                    // curve: Curves.easeIn,
-                    onPointer: true,
-                    debugPrint: false,
-                    fitAndroidIos: BoxFit.cover,
-                    fitWeb: BoxFitWeb.cover,
-                    onLoading: const CircularProgressIndicator(
-                      color: Colors.indigoAccent,
-                    ),
-                    onError: const Icon(
-                      Icons.error,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-
-                Container(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    newsList[index].title.toString(), maxLines: 1,style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
           ),
+          itemCount: newsList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: Column(
+                  children: [
+                    Container(
+                      width: 600,
+                      height: 300,
+                      padding: EdgeInsets.all(8.0),
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.0),
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      child: ImageNetwork(
+                        onTap:
+                            () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => Newdetail(
+                                        title: newsList[index].title.toString(),
+                                        content:
+                                            newsList[index].content.toString(),
+                                        description:
+                                            newsList[index].description
+                                                .toString(),
+                                        image: newsList[index].image.toString(),
+                                      ),
+                                ),
+                              ),
+                            },
+                        image: newsList[index].image.toString(),
+
+                        borderRadius: BorderRadius.circular(6),
+                        height: 350.0,
+                        width: 340,
+                        duration: 1500,
+                        curve: Curves.easeIn,
+                        onPointer: true,
+                        debugPrint: false,
+                        fitAndroidIos: BoxFit.cover,
+                        fitWeb: BoxFitWeb.cover,
+
+                        onLoading: const CircularProgressIndicator(
+                          color: Colors.indigoAccent,
+                        ),
+                        onError: const Icon(Icons.error, color: Colors.red),
+                      ),
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      child: Column(
+                        children: [
+                          Text(
+                            newsList[index].title.toString(),
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            newsList[index].content.toString(),
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w100,
+                            ),
+                          ),
+                          Text(
+                            newsList[index].description.toString(),
+                            maxLines: 3,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w100,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         );
-      },
-    );
   }
 }
